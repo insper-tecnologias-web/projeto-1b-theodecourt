@@ -2,22 +2,36 @@
 {% load static %}
 
 {% block content %}
-<img src="{% static 'notes/img/logo-getit.png' %}" />
-<p>Como o Post-it, mas com outro verbo</p>
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
 
-<form method="post">
+<main class="container">
+  <!-- method="post" foi removido apenas para o exemplo funcionar sem o servidor -->
+  <form method="post" class="form-card">
     {% csrf_token %}
     <label for="titulo">Título</label>
-    <input id="titulo" type="text" name="titulo" />
+    <input id="titulo" type="text" name="titulo" class="autoresize"/>
     <label for="detalhes">Detalhes</label>
-    <textarea id="detalhes" name="detalhes"></textarea>
-    <input type="submit" />
-  </form>   
+    <input id="detalhes" name="detalhes" class="autoresize"/>
+    <input type="submit" class="btn"/>
+  </form>
 
-<ul>
-    {% for note in notes %}
-    <li>{{ note.title }}</li>
-    {% endfor %}
+<ul class="card-container">
+  {% for note in notes %}
+  <li class="card">
+    <a href="delete/{{ note.id }}">X</a>
+    <h3 class="card-title">{{note.title}}</h3>
+    <p class="card-content">{{note.content}}</p>
+  </li>
+  {% endfor %}
 </ul>
+
+</main>
+
+<script type="text/javascript" src="{% static 'notes/script/getit.js' %}"></script>
+
+
 
 {% endblock %}
