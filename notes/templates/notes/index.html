@@ -22,6 +22,8 @@
   {% for note in notes %}
   <li class="card">
     <a href="delete/{{ note.id }}">X</a>
+    <!-- <a href="{% url 'delete_note' note.id %}">X</a> é possível tanto dessa maneira quanto a de acima  -->
+    <a href="edit/{{ note.id }}">editar</a>
     <h3 class="card-title">{{note.title}}</h3>
     <p class="card-content">{{note.content}}</p>
   </li>
