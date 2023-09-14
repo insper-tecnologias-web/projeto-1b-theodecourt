@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Note
-from .forms import NoteForm  # Importe um formulário para a nota (criaremos isso a seguir)
 
 def index(request):
     if request.method == 'POST':
@@ -24,11 +23,11 @@ def edit_note(request, note_id):
     note = get_object_or_404(Note, pk=note_id)
     
     if request.method == 'POST':
-        form = NoteForm(request.POST, instance=note)
-        if form.is_valid():
-            form.save()
-            return redirect('index')  # Redirecione para a página inicial após a edição
-    else:
-        form = NoteForm(instance=note)
-        
-    return render(request, 'notes/edit.html', {'form': form, 'note': note})
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        note.title = title
+        note.content = content
+        note.save()
+        return redirect('index')  # Redirecionar para a página inicial após a edição
+    
+    return render(request, 'notes/edit.html', {'note': note})
