@@ -46,6 +46,23 @@ body {
   transition: background-color 0.3s;
 }
 
+.edit-btn {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  background-color: #f7d736;
+
+  transition: background-color 0.3s;
+}
+
 .btn > * {
   position: relative;
 }
@@ -82,15 +99,45 @@ body {
 .appbar{
   display: flex;
   flex-direction: row;
-  padding: 0.5rem;
+  padding: 1rem;
   background-color: #f7d736;
 }
 
+.logolink{
+  position: inherit;
+  top: 10px; 
+  right: 10px;
+  width: 5%;
+  height: 5%; 
+}
+
 .logo{
+  position: inherit;
   display: flex;
   justify-content: flex-start;
-  width: 5%;
-  height: 5%;
+  width: 100%;
+  height: 100%;
+}
+
+.editpic {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editpic img {
+  width: 20px; 
+  height: 20px; 
+}
+
+.lixopic {
+  position: absolute;
+  top: 10px; 
+  right: 35px; 
+}
+
+.lixopic img {
+  width: 20px; 
+  height: 20px; 
 }
 
 .subtitle{
@@ -110,8 +157,24 @@ body {
   flex:1 1 calc(33.33% - 1.5rem);
   width: 45vw;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem;  
   padding: 0.4rem;
+  border-style: solid;
+  border-radius: 0.3rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+.form-card-edit {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(33.33% - 1.5rem);
+  width: 45vw;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  margin: auto; /* Centralizar horizontalmente */
+  margin-top: 10rem;
   border-style: solid;
   border-radius: 0.3rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
@@ -144,7 +207,6 @@ body {
   margin-right: 1rem;
   margin-bottom: 3rem;
   padding: 0.4rem;
-
 }
 
 .card-title{
@@ -157,9 +219,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2.8rem;
   padding-bottom: 3.5rem;
-  height: 100%;
   box-sizing: border-box;
+  font-style: italic;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: normal;
+  color: rgb(85, 82, 82);
+}
+
+.card-tag{
+  display: flex;
+  margin-bottom: 50rem;
   font-style: italic;
   font-family: 'Permanent Marker', cursive;
   font-weight: normal;
@@ -214,4 +285,11 @@ body {
 .card.card-rotation-10 {
   transform: rotate(0deg);
   background-color: #fae890;
+}
+
+.titulo-tags{
+  font-style: italic;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: normal;
+  color: rgb(85, 82, 82);
 }

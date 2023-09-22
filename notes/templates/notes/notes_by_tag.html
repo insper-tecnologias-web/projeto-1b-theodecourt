@@ -1,0 +1,12 @@
+<h1>Notas com a Tag "{{ tag.name }}"</h1>
+
+<ul>
+    {% for note in notes %}
+        <li>
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.content }}</p>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'tag_list' %}">Voltar para a lista de Tags</a>

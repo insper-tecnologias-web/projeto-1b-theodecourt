@@ -1,11 +1,25 @@
-<form method="post">
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="appbar">
+  <a href="{% url 'index' %}" class="logolink"><img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/></a>
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+
+<form method="post" class="form-card-edit">
     {% csrf_token %}
-    <label for="title">Título:</label>
-    <input type="text" id="title" name="title" value="{{ note.title }}">
+    <label for="titulo">Título</label>
+    <input type="text" id="title" name="title" value="{{ note.title }}" class="autoresize">
     <br>
-    <label for="content">Conteúdo:</label>
-    <textarea id="content" name="content">{{ note.content }}</textarea>
+    <label for="content">Detalhes</label>
+    <input id="content" name="content" value="{{ note.content }}" class="autoresize">
     <br>
-    <button type="submit">Salvar</button>
-    <a href="{% url 'index' %}">Cancelar</a>
+    <label for="tag">Tag</label>
+    <input id="tag" name="tag" value="{{ note.tag }}" class="autoresize"/>
+    <button type="submit" class="edit-btn">Salvar</button>
+    <button class="edit-btn" onclick="window.location.href='{% url 'index' %}'">Cancelar</button>
 </form>
+
+{% endblock %}

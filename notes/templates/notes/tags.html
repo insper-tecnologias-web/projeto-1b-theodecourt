@@ -1,0 +1,19 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="appbar">
+    <a href="{% url 'index' %}" class="logolink"><img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/></a>
+    <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+
+<h1 class="titulo-tags">Todas as Tags:</h1>
+
+<ul>
+    {% for tag in tags %}
+    <li><a href="{% url 'notes_by_tag' tag.id %}">{{ tag.name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
