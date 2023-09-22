@@ -17,7 +17,7 @@
     <input id="content" name="content" value="{{ note.content }}" class="autoresize">
     <br>
     <label for="tag">Tag</label>
-    <input id="tag" name="tag" value="{{ note.tag }}" class="autoresize"/>
+    <input id="tag" name="tag" value="{{ note.tag.name }}" class="autoresize"/>
     <button type="submit" class="edit-btn">Salvar</button>
     <button class="edit-btn" onclick="window.location.href='{% url 'index' %}'">Cancelar</button>
 </form>

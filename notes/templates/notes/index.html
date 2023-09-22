@@ -23,13 +23,16 @@
 <ul class="card-container">
   {% for note in notes %}
   <li class="card">
+    <h3 class="card-title">{{note.title}}</h3>
     <a class="lixopic" href="delete/{{ note.id }}"><img src="{% static 'notes/img/lixo.png' %}" alt="delete"></a>
     <!-- <a href="{% url 'delete_note' note.id %}">X</a> é possível tanto dessa maneira quanto a de acima  -->
     <a class="editpic" href="edit/{{ note.id }}"><img src="{% static 'notes/img/edit.png' %}" alt="Editar"></a>
-    <h3 class="card-title">{{note.title}}</h3>
     <p class="card-content">{{note.content}}</p>
     <!-- <a class="card-tag">Tag: {{ note.tag.name }}</a> -->
-    <p class="card-tag" href="tags/{{ note.tag.id }}">#{{ note.tag.name }}</p>
+    {% if note.tag %}
+    <a class="card-tag" href="tags/{{ note.tag.id }}">#{{ note.tag.name }}</a>
+    {% endif %}
+
   </li>
   {% endfor %}
 </ul>
@@ -40,7 +43,4 @@
 </main>
 
 <script type="text/javascript" src="{% static 'notes/script/getit.js' %}"></script>
-
-
-
 {% endblock %}

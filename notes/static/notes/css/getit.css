@@ -120,8 +120,9 @@ body {
 }
 
 .editpic {
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  top: 10px; 
+  right: 33px; 
 }
 
 .editpic img {
@@ -132,7 +133,7 @@ body {
 .lixopic {
   position: absolute;
   top: 10px; 
-  right: 35px; 
+  right: 5px; 
 }
 
 .lixopic img {
@@ -212,15 +213,14 @@ body {
 .card-title{
   font-family: 'Permanent Marker', cursive;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .card-content{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 2.8rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 2.5rem;
   box-sizing: border-box;
   font-style: italic;
   font-family: 'Permanent Marker', cursive;
@@ -235,6 +235,14 @@ body {
   font-family: 'Permanent Marker', cursive;
   font-weight: normal;
   color: rgb(85, 82, 82);
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh; /* Ajuste o espaçamento superior */
 }
 
 .card.card-rotation-1 {
@@ -292,4 +300,29 @@ body {
   font-family: 'Permanent Marker', cursive;
   font-weight: normal;
   color: rgb(85, 82, 82);
+}
+
+.titulo-tags2{
+  font-size: 3vw; /* Ajuste o valor conforme necessário */
+  font-style: italic;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: normal;
+  color: rgb(85, 82, 82);
+  padding-bottom: 2rem;
+}
+
+.li-tags{
+  font-size: 3vw; /* Ajuste o valor conforme necessário */
+  font-style: italic;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: normal;
+  color: rgb(85, 82, 82);
+}
+
+.notesbytag-title{
+  font-size: 3vw; /* Ajuste o valor conforme necessário */
+  font-family: 'Permanent Marker', cursive;
+  font-weight: normal;
+  padding-top: 1.5rem;
+  padding-bottom: 3.2rem;
 }

@@ -5,11 +5,14 @@ def index(request):
     if request.method == 'POST':
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
-        tag_name = request.POST.get('tag')
+        tag_name = request.POST.get('tag').lower()
 
-        tag, created = Tag.objects.get_or_create(name=tag_name)
-        # TAREFA: Utilize o title e content para criar um novo Note no banco de dados
-        new_note = Note(title=title, content=content, tag=tag)
+        if tag_name!='':
+            tag, created = Tag.objects.get_or_create(name=tag_name)
+            new_note = Note(title=title, content=content, tag=tag)
+        else:
+            new_note = Note(title=title, content=content)
+    
         new_note.save()
         return redirect('index')
     else:
@@ -19,7 +22,15 @@ def index(request):
 def delete_note(request, note_id):
     note = get_object_or_404(Note, pk=note_id)
     #note = Note.objects.get(id=note_id) #possivel tanto a opcao assima quanto essa
+    
+    tag = note.tag
+
     note.delete()
+
+    if tag:
+        if not Note.objects.filter(tag=tag).exists():
+            # Se não estiver mais sendo usada, exclua a tag
+            tag.delete()
     return redirect('index')  # Redirecionar para a página de lista de notas após a exclusão
 
 def edit_note(request, note_id):
@@ -28,9 +39,26 @@ def edit_note(request, note_id):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+        tag_name = request.POST.get('tag').lower()  
+
+
+        old_tag = note.tag
+        
+        if tag_name != '':
+            tag, created = Tag.objects.get_or_create(name=tag_name)
+            note.tag = tag
+        else:
+            note.tag = None
+
         note.title = title
         note.content = content
         note.save()
+
+        if old_tag:
+            if not Note.objects.filter(tag=old_tag).exclude(pk=note_id).exists():
+                # Se não estiver mais sendo usada, exclua a tag antiga
+                old_tag.delete()
+
         return redirect('index')  # Redirecionar para a página inicial após a edição
     
     return render(request, 'notes/edit.html', {'note': note})

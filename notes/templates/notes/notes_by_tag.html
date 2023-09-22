@@ -1,12 +1,26 @@
-<h1>Notas com a Tag "{{ tag.name }}"</h1>
+{% extends "notes/base.html" %}
+{% load static %}
 
-<ul>
-    {% for note in notes %}
-        <li>
-            <h3>{{ note.title }}</h3>
-            <p>{{ note.content }}</p>
+{% block content %}
+
+<div class="appbar">
+    <a href="{% url 'index' %}" class="logolink"><img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/></a>
+    <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+
+<main class="container">
+    <h1 class="notesbytag-title">Notas com a Tag #{{ tag.name }}</h1>
+    <ul class="card-container">
+        {% for note in notes %}
+        <li class="card">
+        <h3 class="card-title">{{note.title}}</h3>
+        <p class="card-content">{{note.content}}</p>
+    
         </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
+</main>
 
-<a href="{% url 'tag_list' %}">Voltar para a lista de Tags</a>
+<script type="text/javascript" src="{% static 'notes/script/getit.js' %}"></script>
+
+{% endblock %}

@@ -8,12 +8,19 @@
     <span class="subtitle">Como o Post-it, mas com outro verbo</span>
 </div>
 
-<h1 class="titulo-tags">Todas as Tags:</h1>
+<main class="tags-container">
 
-<ul>
-    {% for tag in tags %}
-    <li><a href="{% url 'notes_by_tag' tag.id %}">{{ tag.name }}</a></li>
-    {% endfor %}
-</ul>
+    
+    <h1 class="titulo-tags2">Todas as Tags:</h1>
+
+    <ul>
+        {% for tag in tags %}
+        {% if tag.name %}
+        <li><a class="li-tags" href="{% url 'notes_by_tag' tag.id %}">#{{ tag.name }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</main>
+
 
 {% endblock %}
