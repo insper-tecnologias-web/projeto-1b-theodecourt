@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='PGPASSWORD=VWjBsqmQ1umwUfg6dOBP psql -h containers-us-west-119.railway.app -U postgres -p 6388 -d railway',
+        default='postgres://getit_06vj_user:9BCIc48Rv66fskf8XkikOOjsnrjK99oj@dpg-ckam2gmgtj9c73a7dm20-a.oregon-postgres.render.com/getit_06vj',
         conn_max_age=600,
         ssl_require=not DEBUG
     )
